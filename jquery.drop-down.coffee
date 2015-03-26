@@ -98,16 +98,20 @@
 
     #
 #    $.fn.drawerExists        = -> $(this).next().length # Add filter for next
-    $.fn.drawerExists        = -> $(this).nextAll().filter($drawer).length # Add filter for next
+    $.fn.drawerExists        = -> $(this).nextAll().filter($drawer).length
 
 #    $.fn.drawerOpened        = -> $(this).parent().hasClass(toggleClass) # Add filter for parent
-    $.fn.drawerOpened        = -> $(this).closest($listItem).hasClass(toggleClass) # Add filter for parent
+    $.fn.drawerOpened        = -> $(this).closest($listItem).hasClass(toggleClass)
+
     $.fn.firstChild          = -> $(this).parent().is($firstListItem) # Add filter for parent
 
 #    $.fn.lastChild           = -> $(this).parent().is($lastListItem) # Add filter for parent
-    $.fn.lastChild           = -> $(this).closest($li).is($lastListItem)
+#    $.fn.lastChild           = -> $(this).closest($li).is($lastListItem)
+    $.fn.lastChild           = -> $(this).closest($listItem).is($lastListItem)
 
-    $.fn.lastItem            = -> $(this).parent().is($veryLastListItem) # Add filter for parent
+#    $.fn.lastItem            = -> $(this).parent().is($veryLastListItem) # Add filter for parent
+#    $.fn.lastItem            = -> $(this).closest($li).is($veryLastListItem)
+    $.fn.lastItem            = -> $(this).closest($listItem).is($veryLastListItem) # I don't think this is working correctly.
 
     # Click actions
     $.fn.toggleDrawer        = -> $(this).click()
@@ -115,13 +119,13 @@
     $.fn.closeParentDrawer   = -> $(this).closest($drawer).prevAll().filter($a).click()
 
     # Focus actions
-    $.fn.focusNextRootDrawer = -> $(this).closest($rootListItem).nextAll().filter($listItem).find($a).first().focus() # Add filter for next
-#    $.fn.focusNextDrawer     = -> $(this).closest($toggledListItem).nextAll().filter($listItem).first().find($a).first().focus()
+    $.fn.focusNextRootDrawer = -> $(this).closest($rootListItem).nextAll().filter($listItem).find($a).first().focus()
+    $.fn.focusNextDrawer     = -> $(this).closest($toggledListItem).nextAll().filter($listItem).first().find($a).first().focus() # Focuses the next drawer from inside a list.
     $.fn.focusParentDrawer   = -> $(this).closest($drawer).prevAll().filter($a).first().focus()
     $.fn.focusNextItem       = -> $(this).closest($listItem).nextAll().filter($listItem).first().find($a).first().focus()
     $.fn.focusPreviousItem   = -> $(this).closest($listItem).prevAll().filter($listItem).first().find($a).first().focus()
     $.fn.focusDrawerItem     = -> $(this).nextAll().filter($drawer).first().find($listItem).first().find($a).first().focus()
-    $.fn.focusDrawerItemUp   = -> $(this).closest($listItem).prevAll().filter($toggledListItem).first().find($listItem).last().find($a).first().focus() # This name sucks
+    $.fn.focusDrawerItemUp   = -> $(this).closest($listItem).prevAll().filter($toggledListItem).first().find($listItem).last().find($a).first().focus() # This variable name kinda sucks
 
     # Bind arrow keys
     $a.keydown (event) ->
@@ -147,8 +151,7 @@
           if $this.closest($listItem).prevAll().filter($listItem).first().hasClass(toggleClass) # These need to be in logic functions
             $this.focusDrawerItemUp()
 
-          #if when there's a previous drawer open, focus the last item in that drawer
-            #log('yes')
+          # If there's a previous drawer open, focus the last item in that drawer
 
       # Right
       if event.keyCode is 39
@@ -160,7 +163,7 @@
             $this.toggleDrawer()
         else
           if $this.lastChild()
-            if $this.lastItem() # you're not working, i dont' think
+            if $this.lastItem() # I don't think this is working correctly.
               $this.closeRootDrawer()
               $this.focusNextRootDrawer()
             else
@@ -172,10 +175,10 @@
       if event.keyCode is 40
         event.preventDefault()
         if $this.lastChild()
-          if $this.has($veryLastListItem) # not sure what logic is best
-            $this.focusDrawerItem()
-          else
-            $this.focusNextDrawer()
+          $this.focusNextDrawer()
+#          if $this.has($veryLastListItem) # I'm not sure if this is reliable logic for finding the last list?
+#            $this.focusDrawerItem()
+#          else
         else
           if $this.drawerOpened()
             $this.focusDrawerItem()
