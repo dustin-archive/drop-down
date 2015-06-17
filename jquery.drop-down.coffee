@@ -1,5 +1,5 @@
-# Drop Down - 1.0.0
-# March 26, 2015
+# Drop Down - 1.0.1
+# June 16, 2015
 # The MIT License (MIT)
 # Copyright (c) 2015 Dustin Dowell
 # github.com/dustindowell22/drop-down
