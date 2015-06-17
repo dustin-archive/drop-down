@@ -1,5 +1,5 @@
-# Drop Down - 1.0.1
-# June 16, 2015
+# Drop Down - 1.0.2
+# June 17, 2015
 # The MIT License (MIT)
 # Copyright (c) 2015 Dustin Dowell
 # github.com/dustindowell22/drop-down
@@ -32,6 +32,7 @@
       $cButton         = $(this)
       $cParent         = $cButton.parent()
       $cUncle          = $cParent.siblings()
+      $cCousin         = $cUncle.find($li)
       $cDrawer         = $cButton.siblings($ul)
       $cDrawerListItem = $cDrawer.find($li)     # These variable names kinda suck
       $cNestedDrawer   = $cDrawer.find($drawer) # These variable names kinda suck
@@ -48,10 +49,15 @@
         $cDrawerListItem.removeClass(toggleClass)
         $cNestedDrawer.css('height', '')
 
-      # Reset cousins
+      # Reset uncles
       if $cUncle.hasClass(toggleClass)
         $cUncle.removeClass(toggleClass)
         $cUncle.children($drawer).css('height', '')
+
+        # Reset cousins
+        if $cCousin.hasClass(toggleClass)
+          $cCousin.removeClass(toggleClass)
+          $cCousin.children($drawer).css('height', '')
 
       # Animate auto
       $drawer.update().reverse().each ->

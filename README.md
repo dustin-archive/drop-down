@@ -1,4 +1,4 @@
-Drop Down - 1.0.1
+Drop Down - 1.0.2
 ==========
 
 A jQuery drop down menu.
