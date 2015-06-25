@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+**June 25, 2015**
++ 1.0.3
+  + Changed the height checking for animations to include padding
+
 **June 17, 2015**
 + 1.0.2
   + Cousins are reset properly when you click a new dropdown

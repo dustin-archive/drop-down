@@ -1,5 +1,5 @@
-# Drop Down - 1.0.2
-# June 17, 2015
+# Drop Down - 1.0.3
+# June 25, 2015
 # The MIT License (MIT)
 # Copyright (c) 2015 Dustin Dowell
 # github.com/dustindowell22/drop-down
@@ -9,7 +9,7 @@
 (($) ->
   $.fn.dropDown = (toggleClass = 'toggled') ->
 
-    #
+    # Cache this object
     $this = $(this)
 
     #
@@ -68,7 +68,7 @@
 
         if $aParent.hasClass(toggleClass)
           $aClone = $aDrawer.clone().css('display', 'none').appendTo($aParent)
-          height = $aClone.css('height', 'auto').height() + 'px'
+          height = $aClone.css('height', 'auto').outerHeight() + 'px'
           $aClone.remove()
           $aDrawer.css('height', '').css('height', height)
 
