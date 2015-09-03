@@ -6,7 +6,7 @@ A jQuery drop down menu.
 
 ## Quick Start
 
-Jade <sub><sup>(HTML)</sup></sub>
+Jade / HTML
 ```jade
 // Utilities
 script(src='buckle/scripts/js/jquery.reverse.js')
@@ -16,7 +16,7 @@ script(src='buckle/scripts/js/jquery.update.js')
 script(src='buckle/scripts/js/jquery.drop-down.js')
 ```
 
-CoffeeScript <sub><sup>(JavaScript)</sup></sub>
+CoffeeScript / JavaScript
 ```coffeescript
 $('#menu-drawer').dropDown()
 ```
