@@ -1,5 +1,5 @@
-# Drop Down - 1.0.3
-# June 25, 2015
+# Drop Down - 1.0.4
+# September 2, 2015
 # The MIT License (MIT)
 # Copyright (c) 2015 Dustin Dowell
 # github.com/dustindowell22/drop-down
@@ -18,9 +18,9 @@
     $a  = $this.find('a')
 
     #
-    $button   = $ul.siblings($a) # Buttons are anchors that sister an unordered-list
-    $parent   = $a.closest($li)  # Parents are list-items that parent anchors
-    $drawer   = $a.siblings($ul) # Drawers are unordered-lists sister anchors
+    $button   = $ul.siblings($a) # Buttons are anchors that are siblings to an unordered-list
+    $parent   = $a.closest($li)  # Parents are list-items that are parents to anchors
+    $drawer   = $a.siblings($ul) # Drawers are unordered-lists that are siblings to anchors
     $link     = $a.not($button)  # Links are anchors that are not buttons
     $listItem = $li.has($a)      # List-items contain anchors
 
@@ -34,8 +34,8 @@
       $cUncle          = $cParent.siblings()
       $cCousin         = $cUncle.find($li)
       $cDrawer         = $cButton.siblings($ul)
-      $cDrawerListItem = $cDrawer.find($li)     # These variable names kinda suck
-      $cNestedDrawer   = $cDrawer.find($drawer) # These variable names kinda suck
+      $cDrawerListItem = $cDrawer.find($listItem) # These variable names kinda suck
+      $cNestedDrawer   = $cDrawer.find($drawer)   # These variable names kinda suck
 
       #
       if $cParent.hasClass(toggleClass)

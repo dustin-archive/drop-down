@@ -2,6 +2,10 @@ Changelog
 ==========
 
 **June 25, 2015**
++ 1.0.4
+  + Further filter $cDrawerListItem to find $listItem instead of $li
+
+**June 25, 2015**
 + 1.0.3
   + Changed the height checking for animations to include padding
 
