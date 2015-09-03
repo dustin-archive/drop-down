@@ -8,11 +8,11 @@ A jQuery drop down menu.
 
 Jade / HTML
 ```jade
-// Utilities
+//- Utilities
 script(src='buckle/scripts/js/jquery.reverse.js')
 script(src='buckle/scripts/js/jquery.update.js')
 
-// Plugin
+//- Plugin
 script(src='buckle/scripts/js/jquery.drop-down.js')
 ```
 
